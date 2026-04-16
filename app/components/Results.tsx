@@ -7,6 +7,7 @@ import { Tool } from '@/app/data/tools';
 import { Answers } from '@/app/lib/scoreTools';
 import ToolCard from './ToolCard';
 import { GRADE_LABELS, GOAL_LABELS } from '@/app/data/questions';
+import { BASE_PATH } from '@/app/lib/basePath';
 
 interface ResultsProps {
   tools: Tool[];
@@ -40,7 +41,7 @@ export default function Results({ tools, answers, onReset }: ResultsProps) {
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <Image
-            src="/logo.png"
+            src={`${BASE_PATH}/logo.png`}
             alt="Right Path Educational Consulting"
             width={220}
             height={70}
@@ -136,7 +137,7 @@ export default function Results({ tools, answers, onReset }: ResultsProps) {
         {/* Branded footer */}
         <div className="text-center mt-10 pt-8 border-t border-gray-100">
           <Image
-            src="/logo.png"
+            src={`${BASE_PATH}/logo.png`}
             alt="Right Path Educational Consulting"
             width={160}
             height={50}

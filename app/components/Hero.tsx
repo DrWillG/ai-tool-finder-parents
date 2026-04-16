@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { BASE_PATH } from '@/app/lib/basePath';
 
 interface HeroProps {
   onStart: () => void;
@@ -24,7 +25,7 @@ export default function Hero({ onStart }: HeroProps) {
         className="mb-10"
       >
         <Image
-          src="/logo.png"
+          src={`${BASE_PATH}/logo.png`}
           alt="Right Path Educational Consulting"
           width={320}
           height={100}

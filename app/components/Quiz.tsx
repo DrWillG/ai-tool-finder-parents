@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { QUIZ_STEPS } from '@/app/data/questions';
+import { BASE_PATH } from '@/app/lib/basePath';
 import { Answers } from '@/app/lib/scoreTools';
 
 interface QuizProps {
@@ -40,7 +41,7 @@ export default function Quiz({ onComplete }: QuizProps) {
       {/* Logo */}
       <div className="mb-8">
         <Image
-          src="/logo.png"
+          src={`${BASE_PATH}/logo.png`}
           alt="Right Path Educational Consulting"
           width={220}
           height={70}
