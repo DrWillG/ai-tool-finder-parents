@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Tool } from '@/app/data/tools';
 import { Answers } from '@/app/lib/scoreTools';
@@ -26,16 +27,37 @@ export default function Results({ tools, answers, onReset }: ResultsProps) {
   const grade = GRADE_LABELS[answers.grade] ?? answers.grade;
   const goal = GOAL_LABELS[answers.goal] ?? answers.goal;
 
+  const filters = [
+    { key: 'all', label: 'All results' },
+    { key: 'free', label: '💚 Free only' },
+    { key: 'buildsSkills', label: '🧠 Builds skills' },
+    { key: 'coppa', label: '🔒 COPPA compliant' },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 py-10 px-4">
       <div className="max-w-5xl mx-auto">
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
+          <Image
+            src="/logo.png"
+            alt="Right Path Educational Consulting"
+            width={220}
+            height={70}
+            className="h-14 w-auto object-contain"
+          />
+        </div>
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-10"
         >
-          <div className="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 text-sm font-medium px-4 py-1.5 rounded-full mb-4">
+          <div
+            className="inline-flex items-center gap-2 text-sm font-medium px-4 py-1.5 rounded-full mb-4"
+            style={{ backgroundColor: '#F3EDF9', color: '#6B35A0' }}
+          >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -51,20 +73,15 @@ export default function Results({ tools, answers, onReset }: ResultsProps) {
 
         {/* Filter chips */}
         <div className="flex flex-wrap gap-2 justify-center mb-8">
-          {[
-            { key: 'all', label: 'All results' },
-            { key: 'free', label: '💚 Free only' },
-            { key: 'buildsSkills', label: '🧠 Builds skills' },
-            { key: 'coppa', label: '🔒 COPPA compliant' },
-          ].map((f) => (
+          {filters.map((f) => (
             <button
               key={f.key}
               onClick={() => setFilter(f.key as typeof filter)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all ${
-                filter === f.key
-                  ? 'bg-indigo-600 text-white border-indigo-600'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-indigo-300'
-              }`}
+              className="px-4 py-1.5 rounded-full text-sm font-medium border transition-all"
+              style={filter === f.key
+                ? { backgroundColor: '#6B35A0', color: 'white', borderColor: '#6B35A0' }
+                : { backgroundColor: 'white', color: '#4b5563', borderColor: '#e5e7eb' }
+              }
             >
               {f.label}
             </button>
@@ -83,7 +100,8 @@ export default function Results({ tools, answers, onReset }: ResultsProps) {
             <p className="text-lg">No tools match that filter.</p>
             <button
               onClick={() => setFilter('all')}
-              className="mt-2 text-indigo-500 hover:underline text-sm"
+              className="mt-2 hover:underline text-sm"
+              style={{ color: '#6B35A0' }}
             >
               Show all results
             </button>
@@ -106,13 +124,25 @@ export default function Results({ tools, answers, onReset }: ResultsProps) {
         <div className="text-center">
           <button
             onClick={onReset}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-gray-200 text-gray-600 font-medium text-sm hover:border-indigo-300 hover:text-indigo-600 transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-gray-200 text-gray-600 font-medium text-sm hover:border-gray-300 transition-colors shadow-sm"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
             Start over
           </button>
+        </div>
+
+        {/* Branded footer */}
+        <div className="text-center mt-10 pt-8 border-t border-gray-100">
+          <Image
+            src="/logo.png"
+            alt="Right Path Educational Consulting"
+            width={160}
+            height={50}
+            className="h-10 w-auto object-contain mx-auto mb-2 opacity-70"
+          />
+          <p className="text-xs italic" style={{ color: '#C48A2A' }}>Everyone deserves a right path!</p>
         </div>
       </div>
     </div>

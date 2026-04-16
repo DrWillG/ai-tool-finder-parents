@@ -54,11 +54,11 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50 flex flex-col items-center justify-center gap-6"
+            className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 flex flex-col items-center justify-center gap-6"
           >
             <div className="relative w-16 h-16">
               <div className="w-16 h-16 rounded-full border-4 border-indigo-100" />
-              <div className="absolute inset-0 w-16 h-16 rounded-full border-4 border-indigo-500 border-t-transparent animate-spin" />
+              <div className="absolute inset-0 w-16 h-16 rounded-full border-4 border-t-transparent animate-spin" style={{ borderColor: '#6B35A0', borderTopColor: 'transparent' }} />
             </div>
             <div className="text-center">
               <p className="text-lg font-semibold text-gray-800">Finding your matches…</p>

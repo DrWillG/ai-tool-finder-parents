@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Tool Finder for Parents",
-  description: "Find safe, age-appropriate AI tools for your child in 5 questions. Informed by real parent surveys.",
+  title: "The Right Path Parent AI Guide",
+  description: "Find safe, age-appropriate AI tools for your child in 5 questions. Informed by real parent surveys from Blue Ridge Academy and CAAASA Conference.",
 };
 
 export default function RootLayout({
